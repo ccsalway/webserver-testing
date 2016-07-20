@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from wsgiref import simple_server
-
-
 def application(env, start_response):
     start_response('200 OK', [('Content-Type', 'text/plain')])
     return [b"GET"]
 
 
 if __name__ == '__main__':
-    """development purposes - not run by uwsgi"""
+    """testing purposes - not run by uwsgi"""
+    from wsgiref import simple_server
+
     httpd = simple_server.make_server('', 8000, application)
     sa = httpd.socket.getsockname()
     try:
